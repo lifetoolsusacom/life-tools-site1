@@ -1,20 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { CartIcon, SearchIcon } from "@/components/Icons";
+import { useCart } from "@/lib/CartContext";
+import { formatPrice } from "@/lib/products";
 
 export default function Header() {
+  const { totalItems, totalCents, openCart } = useCart();
+
   return (
     <header className="bg-brand-navy text-white">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-6">
-        <Link href="/" className="flex items-center gap-2 font-bold text-2xl shrink-0">
-          <span className="relative w-10 h-10 shrink-0">
+        <Link href="/" className="flex items-center shrink-0">
+          <span className="relative w-14 h-14 shrink-0">
             <Image
               src="/logo.png"
-              alt="Life Tools logo"
+              alt="Life Tools"
               fill
               className="object-contain"
             />
           </span>
-          <span className="hidden sm:inline">Life Tools</span>
         </Link>
 
         <form action="/#products" className="flex-1 max-w-2xl">
@@ -29,21 +35,34 @@ export default function Header() {
               aria-label="Search"
               className="absolute right-0 top-0 h-full px-3 flex items-center justify-center text-brand-navyDark"
             >
-              🔍
+              <SearchIcon className="w-5 h-5" />
             </button>
           </div>
         </form>
 
-        <div className="hidden md:flex items-center gap-6 text-sm shrink-0">
-          <Link href="/#contact" className="flex flex-col items-center hover:text-brand-yellow transition">
-            <span className="text-lg leading-none">👤</span>
-            <span>Sign In</span>
-          </Link>
-          <Link href="/#products" className="flex flex-col items-center hover:text-brand-yellow transition">
-            <span className="text-lg leading-none">🛒</span>
-            <span>0 Items · $0.00</span>
-          </Link>
-        </div>
+        <button
+          onClick={openCart}
+          aria-label="Open cart"
+          className="hidden md:flex items-center gap-2 text-sm shrink-0 hover:text-brand-yellow transition"
+        >
+          <CartIcon className="w-6 h-6" />
+          <span>
+            {totalItems} {totalItems === 1 ? "Item" : "Items"} · {formatPrice(totalCents)}
+          </span>
+        </button>
+
+        <button
+          onClick={openCart}
+          aria-label="Open cart"
+          className="md:hidden flex items-center gap-1 shrink-0"
+        >
+          <CartIcon className="w-6 h-6" />
+          {totalItems > 0 && (
+            <span className="bg-brand-orange text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+              {totalItems}
+            </span>
+          )}
+        </button>
       </div>
     </header>
   );

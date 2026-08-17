@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { notFound, useParams } from "next/navigation";
 import { getProductBySlug, formatPrice } from "@/lib/products";
+import { useCart } from "@/lib/CartContext";
+import { TruckIcon, MailCheckIcon, LockIcon } from "@/components/Icons";
 
 function Stars({ rating }: { rating: number }) {
   const full = Math.round(rating);
@@ -19,11 +21,17 @@ export default function ProductPage() {
   const params = useParams<{ slug: string }>();
   const product = getProductBySlug(params.slug);
   const [activeImage, setActiveImage] = useState(0);
+  const { addItem, openCart } = useCart();
 
   if (!product) return notFound();
 
   const gallery = product.images.length ? product.images : [product.imageUrl];
   const onSale = !!product.compareAtCents && product.compareAtCents > product.priceCents;
+
+  function handleAddToCart() {
+    addItem(product, 1);
+    openCart();
+  }
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-10">
@@ -92,33 +100,33 @@ export default function ProductPage() {
           {product.inStock ? "In stock, ready to ship" : "Out of stock"}
         </p>
 
-        <a
-          href={product.paymentLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-block w-full text-center bg-brand-orange text-white font-semibold py-3 rounded-full hover:bg-orange-600 transition"
-        >
-          Buy now
-        </a>
-
-        <a
-          href={product.paymentLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 inline-block w-full text-center bg-white text-brand-navyDark font-semibold py-3 rounded-full border border-brand-navyDark hover:bg-brand-navyDark hover:text-white transition"
+        <button
+          onClick={handleAddToCart}
+          disabled={!product.inStock}
+          className={`mt-6 inline-block w-full text-center font-semibold py-3 rounded-full transition ${
+            product.inStock
+              ? "bg-brand-orange text-white hover:bg-orange-600"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
+          }`}
         >
           Add to cart
-        </a>
+        </button>
 
         <div className="mt-8">
           <h2 className="font-semibold text-brand-navyDark mb-2">Description</h2>
           <p className="text-sm text-gray-600 leading-relaxed">{product.description}</p>
         </div>
 
-        <div className="mt-6 text-xs text-gray-500 space-y-1">
-          <p>🚚 Free shipping on orders over $199.90 (contiguous US only).</p>
-          <p>📧 Order and shipping updates sent by email.</p>
-          <p>🔒 Secure checkout.</p>
+        <div className="mt-6 text-xs text-gray-500 space-y-2">
+          <p className="flex items-center gap-2">
+            <TruckIcon className="w-4 h-4" /> Free shipping on orders over $199.90 (contiguous US only).
+          </p>
+          <p className="flex items-center gap-2">
+            <MailCheckIcon className="w-4 h-4" /> Order and shipping updates sent by email.
+          </p>
+          <p className="flex items-center gap-2">
+            <LockIcon className="w-4 h-4" /> Secure checkout.
+          </p>
         </div>
       </div>
     </div>

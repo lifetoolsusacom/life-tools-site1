@@ -1,17 +1,27 @@
-# Life Tools - Storefront v3
+# Life Tools - Storefront v4
 
-Updated to match the new reference layout:
+Updates in this version:
 
-- Full-width auto-advancing carousel (no max-width container), images
-  should be 800x350 or the same aspect ratio. It fills the banner area
-  edge-to-edge like the brown reference block.
-- Header now uses your logo image (heart + trowel) instead of the "LT"
-  badge. Place your logo file at `public/logo.png`.
-- Social bar centered with Facebook, Whatsapp, and Email, followed by a
-  navy strip: "All purchases are finalized via email".
-- FAQ section moved above the Shipping / Returns block on the homepage
-  (previously it lived only in the footer).
-- Footer keeps Life Tools info, Support, and Policies.
+1. Real SVG icons replace emoji everywhere: Facebook, WhatsApp, Email in
+   the social bar, plus Cart, Search, Lock, Truck, Mail, Tool icons across
+   the header and trust bar (see `components/Icons.tsx`).
+2. Header simplified: shows only the logo image (no "Life Tools" text
+   label next to it). Place your real logo at `public/logo.png`.
+3. Fully working shopping cart:
+   - "Add to cart" on product cards and the product page adds items to a
+     cart stored in `lib/CartContext.tsx` (persisted in localStorage).
+   - Clicking the cart icon in the header opens a slide-in drawer
+     (`components/CartDrawer.tsx`) listing all items, with quantity
+     controls and remove buttons.
+   - "Finalizar Compra" builds a `mailto:` link with the full order
+     summary (items, quantities, total) and opens the customer's email
+     client addressed to `orders@lifetools.com`.
+4. "Sign In" button removed from the header entirely.
+5. Footer "Policies" links now navigate to real, detailed pages:
+   - `/policies/shipping`
+   - `/policies/returns`
+   - `/policies/privacy`
+   - `/policies/terms`
 
 ## 1. Add your real images
 
@@ -20,8 +30,6 @@ Open `public/` and replace:
 - `logo.png` with your real logo (heart + trowel design)
 - `banner-1.jpg`, `banner-2.jpg`, `banner-3.jpg` with your carousel images
   (800x350 recommended)
-
-See `public/README-IMAGES.txt` for details.
 
 ## 2. Install dependencies
 
@@ -32,16 +40,14 @@ npm install
 ## 3. Edit your products
 
 Open `lib/products.ts` and edit the `products` array (name, price, images,
-description, payment link, badge, rating) and the `banners` array (paths
-to your carousel images).
+description, badge, rating) and the `banners` array.
 
-## 4. Edit social links
+## 4. Edit social links and checkout email
 
-Open `components/SocialBar.tsx` and update:
-
-- `FACEBOOK_URL`
-- `EMAIL_ADDRESS`
-- `WHATSAPP_NUMBER` (digits only, with country code, e.g. 15551234567)
+- `components/SocialBar.tsx`: update `FACEBOOK_URL`, `EMAIL_ADDRESS`,
+  `WHATSAPP_NUMBER`.
+- `components/CartDrawer.tsx`: update `ORDERS_EMAIL` if different from
+  `orders@lifetools.com`.
 
 ## 5. Run locally
 
@@ -53,7 +59,10 @@ Open http://localhost:3000
 
 ## 6. Deploy
 
-1. Push this project to a GitHub repository.
-2. Go to vercel.com, sign in with GitHub, import the repo.
-3. Deploy with default settings (Next.js is auto-detected).
-4. Add your custom domain in Vercel > Settings > Domains.
+```
+git add .
+git commit -m "Update: real icons, working cart, policy pages"
+git push
+```
+
+Vercel redeploys automatically on every push.

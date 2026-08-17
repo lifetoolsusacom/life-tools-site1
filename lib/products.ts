@@ -161,9 +161,6 @@ export function getProductBySlug(slug: string) {
   return products.find((p) => p.slug === slug);
 }
 
-// Carousel banners - each image should be 800x350 (or the same aspect ratio).
-// The carousel container fills the brown/dark area edge-to-edge, matching
-// the reference layout. Max 3 slides are shown, auto-advancing.
 export type Banner = {
   id: string;
   imageUrl: string;

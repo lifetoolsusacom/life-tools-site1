@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel";
 import ProductCard from "@/components/ProductCard";
 import FAQ from "@/components/FAQ";
+import TrustBar from "@/components/TrustBar";
 import { products, banners } from "@/lib/products";
 
 export default function HomePage() {
@@ -21,17 +22,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trust bar */}
-      <section className="bg-brand-gray border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm text-gray-600">
-          <div>🔒 Secure checkout</div>
-          <div>📦 Tracked shipping</div>
-          <div>📧 Email order updates</div>
-          <div>🛠️ Pro-grade tools</div>
-        </div>
-      </section>
+      {/* Trust bar with real icons */}
+      <TrustBar />
 
-      {/* FAQ now sits above Shipping / Returns, matching the reference layout */}
+      {/* FAQ sits above Shipping / Returns */}
       <FAQ />
 
       {/* Shipping / Returns */}

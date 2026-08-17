@@ -1,7 +1,9 @@
+import { FacebookIcon, WhatsAppIcon, EmailIcon } from "@/components/Icons";
+
 // Update these links to your real Facebook page, support email, and WhatsApp number.
-const FACEBOOK_URL = "https://facebook.com/worldtools/";
-const EMAIL_ADDRESS = "lifetoolsusa@gmail.com";
-const WHATSAPP_NUMBER = "19096693801"; // country code + number, digits only
+const FACEBOOK_URL = "https://facebook.com/lifetools";
+const EMAIL_ADDRESS = "support@lifetools.com";
+const WHATSAPP_NUMBER = "15551234567"; // country code + number, digits only
 
 export default function SocialBar() {
   return (
@@ -14,7 +16,7 @@ export default function SocialBar() {
           aria-label="Life Tools on Facebook"
           className="flex items-center gap-2 hover:text-brand-yellow transition"
         >
-          <span aria-hidden className="text-lg">📘</span>
+          <FacebookIcon className="w-5 h-5" />
           <span>Facebook</span>
         </a>
 
@@ -25,7 +27,7 @@ export default function SocialBar() {
           aria-label="Chat with Life Tools on WhatsApp"
           className="flex items-center gap-2 hover:text-brand-yellow transition"
         >
-          <span aria-hidden className="text-lg">💬</span>
+          <WhatsAppIcon className="w-5 h-5" />
           <span>Whatsapp</span>
         </a>
 
@@ -34,7 +36,7 @@ export default function SocialBar() {
           aria-label="Email Life Tools support"
           className="flex items-center gap-2 hover:text-brand-yellow transition"
         >
-          <span aria-hidden className="text-lg">📧</span>
+          <EmailIcon className="w-5 h-5" />
           <span>Email</span>
         </a>
       </div>

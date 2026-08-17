@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-brand-navyDark text-gray-300 mt-16">
@@ -19,10 +21,28 @@ export default function Footer() {
 
         <div>
           <h3 className="text-white font-semibold mb-2">Policies</h3>
-          <p>Shipping Policy</p>
-          <p>Returns &amp; Refunds</p>
-          <p>Privacy Policy</p>
-          <p>Terms of Service</p>
+          <ul className="space-y-1">
+            <li>
+              <Link href="/policies/shipping" className="hover:text-brand-yellow hover:underline transition">
+                Shipping Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/returns" className="hover:text-brand-yellow hover:underline transition">
+                Returns &amp; Refunds
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/privacy" className="hover:text-brand-yellow hover:underline transition">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link href="/policies/terms" className="hover:text-brand-yellow hover:underline transition">
+                Terms of Service
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 

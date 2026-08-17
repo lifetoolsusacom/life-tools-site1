@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Product, formatPrice } from "@/lib/products";
+import { useCart } from "@/lib/CartContext";
 
 function Stars({ rating }: { rating: number }) {
   const full = Math.round(rating);
@@ -13,6 +16,7 @@ function Stars({ rating }: { rating: number }) {
 }
 
 export default function ProductCard({ product }: { product: Product }) {
+  const { addItem } = useCart();
   const onSale = !!product.compareAtCents && product.compareAtCents > product.priceCents;
 
   return (
@@ -67,16 +71,19 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </div>
 
-      <Link
-        href={`/product/${product.slug}`}
+      <button
+        onClick={() => addItem(product, 1)}
+        disabled={!product.inStock}
         className={`w-full text-center text-sm font-semibold py-2 rounded-full border transition ${
-          onSale
-            ? "bg-brand-green text-white border-brand-green hover:bg-green-700"
-            : "bg-white text-brand-navyDark border-brand-navyDark hover:bg-brand-navyDark hover:text-white"
+          product.inStock
+            ? onSale
+              ? "bg-brand-green text-white border-brand-green hover:bg-green-700"
+              : "bg-white text-brand-navyDark border-brand-navyDark hover:bg-brand-navyDark hover:text-white"
+            : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
         }`}
       >
-        {onSale ? "Add to cart" : "Select options"}
-      </Link>
+        {product.inStock ? "Add to cart" : "Out of stock"}
+      </button>
     </div>
   );
 }

@@ -5,9 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Banner } from "@/lib/products";
 
-// Full-bleed carousel: covers the entire width of the page, edge to edge,
-// like the brown reference area. Images should be 800x350 (or same ratio);
-// they are cropped with object-cover to always fill the banner area.
 export default function Carousel({ banners }: { banners: Banner[] }) {
   const slides = banners.slice(0, 3);
   const [index, setIndex] = useState(0);
