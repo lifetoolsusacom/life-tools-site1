@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { notFound, useParams } from "next/navigation";
-import { getProductBySlug, formatPrice } from "@/lib/products";
+import { getProductBySlug, formatPrice, Product } from "@/lib/products";
 import { useCart } from "@/lib/CartContext";
 import { TruckIcon, MailCheckIcon, LockIcon } from "@/components/Icons";
 
@@ -25,6 +25,30 @@ export default function ProductPage() {
 
   if (!product) return notFound();
 
+  return (
+    <ProductPageContent
+      product={product}
+      activeImage={activeImage}
+      setActiveImage={setActiveImage}
+      addItem={addItem}
+      openCart={openCart}
+    />
+  );
+}
+
+function ProductPageContent({
+  product,
+  activeImage,
+  setActiveImage,
+  addItem,
+  openCart,
+}: {
+  product: Product;
+  activeImage: number;
+  setActiveImage: (i: number) => void;
+  addItem: (product: Product, quantity?: number) => void;
+  openCart: () => void;
+}) {
   const gallery = product.images.length ? product.images : [product.imageUrl];
   const onSale = !!product.compareAtCents && product.compareAtCents > product.priceCents;
 
