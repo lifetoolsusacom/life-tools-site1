@@ -1,0 +1,43 @@
+// Update these links to your real Facebook page, support email, and WhatsApp number.
+const FACEBOOK_URL = "https://facebook.com/worldtools/";
+const EMAIL_ADDRESS = "lifetoolsusa@gmail.com";
+const WHATSAPP_NUMBER = "19096693801"; // country code + number, digits only
+
+export default function SocialBar() {
+  return (
+    <div className="bg-brand-navyDark text-white text-sm">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-10">
+        <a
+          href={FACEBOOK_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Life Tools on Facebook"
+          className="flex items-center gap-2 hover:text-brand-yellow transition"
+        >
+          <span aria-hidden className="text-lg">📘</span>
+          <span>Facebook</span>
+        </a>
+
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat with Life Tools on WhatsApp"
+          className="flex items-center gap-2 hover:text-brand-yellow transition"
+        >
+          <span aria-hidden className="text-lg">💬</span>
+          <span>Whatsapp</span>
+        </a>
+
+        <a
+          href={`mailto:${EMAIL_ADDRESS}`}
+          aria-label="Email Life Tools support"
+          className="flex items-center gap-2 hover:text-brand-yellow transition"
+        >
+          <span aria-hidden className="text-lg">📧</span>
+          <span>Email</span>
+        </a>
+      </div>
+    </div>
+  );
+}
