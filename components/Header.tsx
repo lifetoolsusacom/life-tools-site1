@@ -11,14 +11,14 @@ export default function Header() {
 
   return (
     <header className="bg-brand-navy text-white">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-6">
-        <Link href="/" className="flex items-center shrink-0">
-          <span className="relative w-20 h-20 shrink-0">
+      <div className="max-w-7xl mx-auto px-4 flex items-center gap-6 h-14 overflow-visible relative">
+        <Link href="/" className="flex items-center shrink-0 relative z-10">
+           <span className="relative w-20 h-20 shrink-0 -my-4">
             <Image
               src="/logo.png"
-              alt="Life Tools"
+             alt="Life Tools"
               fill
-              className="object-contain"
+             className="object-contain"
             />
           </span>
         </Link>
