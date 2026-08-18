@@ -146,7 +146,7 @@ export default function CartDrawer() {
               }}
               className="block w-full text-center bg-brand-orange text-white font-semibold py-3 rounded-full hover:bg-orange-600 transition"
             >
-              Finalizar Compra
+              Checkout
             </a>
 
             <p className="text-xs text-gray-500 text-center">

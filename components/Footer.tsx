@@ -47,7 +47,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-xs text-gray-500 pb-6">
-        © {new Date().getFullYear()} Life Tools. All rights reserved.
+        © {new Date().getFullYear()} Life Tools. All rights reserved.❤️
       </div>
     </footer>
   );
