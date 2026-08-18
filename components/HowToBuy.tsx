@@ -50,7 +50,7 @@ export default function HowToBuy() {
           const Icon = step.icon;
           return (
             <div key={step.number} className="flex flex-col items-center text-center">
-              <div className="relative w-16 h-16 rounded-full bg-brand-navy text-white flex items-center justify-center mb-4">
+              <div className="relative w-16 h-16 rounded-full bg-sky-700 text-white flex items-center justify-center mb-4">
                 <Icon className="w-7 h-7" />
                 <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-brand-orange text-white text-xs font-bold flex items-center justify-center">
                   {step.number}

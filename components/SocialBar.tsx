@@ -1,9 +1,9 @@
 import { FacebookIcon, WhatsAppIcon, EmailIcon } from "@/components/Icons";
 
 // Update these links to your real Facebook page, support email, and WhatsApp number.
-const FACEBOOK_URL = "https://facebook.com/lifetools";
+const FACEBOOK_URL = "https://facebook.com/worldtools";
 const EMAIL_ADDRESS = "support@lifetools.com";
-const WHATSAPP_NUMBER = "15551234567"; // country code + number, digits only
+const WHATSAPP_NUMBER = "19096693801"; // country code + number, digits only
 
 export default function SocialBar() {
   return (

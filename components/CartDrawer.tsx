@@ -32,12 +32,19 @@ export default function CartDrawer() {
       "",
       `Order total: ${formatPrice(totalCents)}`,
       "",
-      "My details:",
-      "Name:",
-      "Shipping address:",
-      "Phone:",
+      "Fill in the details below in the same order",
+      "Country: ",
+      "Region: ",
+      "City: ",
+      "Street: ",
+      "House number: ",
+      "Zip code: ",
+      "Phone number: ",
+      "Last name: ",
+      "First name: ",
       "",
       "Please send me a secure payment link to complete this purchase.",
+      "(If you need to add more items, close this email and return to the website)",
     ].join("\n");
 
     return `mailto:${ORDERS_EMAIL}?subject=${encodeURIComponent(

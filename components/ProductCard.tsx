@@ -77,7 +77,7 @@ export default function ProductCard({ product }: { product: Product }) {
         className={`w-full text-center text-sm font-semibold py-2 rounded-full border transition ${
           product.inStock
             ? onSale
-              ? "bg-brand-green text-white border-brand-green hover:bg-green-700"
+              ? "bg-green-800 text-white border-brand-green hover:bg-green-500"
               : "bg-white text-brand-navyDark border-brand-navyDark hover:bg-brand-navyDark hover:text-white"
             : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
         }`}
