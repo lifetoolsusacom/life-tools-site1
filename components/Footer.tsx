@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer id="contact" className="bg-brand-navyDark text-gray-300 mt-16">
-      <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-sm">
+      <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-sm text-center">
         <div>
           <h3 className="text-white font-semibold mb-2">Life Tools</h3>
           <p>
@@ -21,7 +21,7 @@ export default function Footer() {
 
         <div>
           <h3 className="text-white font-semibold mb-2">Policies</h3>
-          <ul className="space-y-1">
+          <ul className="space-y-1 flex flex-col items-center">
             <li>
               <Link href="/policies/shipping" className="hover:text-brand-yellow hover:underline transition">
                 Shipping Policy

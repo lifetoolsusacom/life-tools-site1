@@ -13,7 +13,7 @@ export default function Header() {
     <header className="bg-brand-navy text-white">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-6">
         <Link href="/" className="flex items-center shrink-0">
-          <span className="relative w-14 h-14 shrink-0">
+          <span className="relative w-20 h-20 shrink-0">
             <Image
               src="/logo.png"
               alt="Life Tools"
