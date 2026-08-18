@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <header className="bg-brand-navy text-white">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 h-14 overflow-visible relative">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-3 h-14 overflow-visible relative">
         <Link href="/" className="flex items-center shrink-0 relative z-10 ml-6">
           <span className="relative w-21 h-21 shrink-0 mt-4">
             <Image
