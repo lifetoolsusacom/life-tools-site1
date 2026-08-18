@@ -1,5 +1,6 @@
 import Carousel from "@/components/Carousel";
 import ProductCard from "@/components/ProductCard";
+import HowToBuy from "@/components/HowToBuy";
 import FAQ from "@/components/FAQ";
 import TrustBar from "@/components/TrustBar";
 import { products, banners } from "@/lib/products";
@@ -24,6 +25,9 @@ export default function HomePage() {
 
       {/* Trust bar with real icons */}
       <TrustBar />
+
+      {/* How to Buy - explains the full purchase flow, placed above the FAQ */}
+      <HowToBuy />
 
       {/* FAQ sits above Shipping / Returns */}
       <FAQ />
