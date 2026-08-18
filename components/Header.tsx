@@ -23,7 +23,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <form action="/#products" className="flex-1 max-w-2xl">
+        <form action="/#products" className="flex-1 max-w-2xl mx-6">
           <div className="relative">
             <input
               type="text"
