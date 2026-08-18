@@ -24,7 +24,7 @@ export default function HowToBuy() {
       icon: LockIcon,
       title: "Add your details and send",
       description:
-        "In the pre-filled email, add your name, shipping address, and phone number, then send it to us. We will reply with a secure payment link to complete your purchase.",
+        "Enter all the requested details into the pre-filled email, then send it to us. We will reply with a secure payment link to complete your purchase.",
     },
     {
       number: "4",
@@ -68,8 +68,7 @@ export default function HowToBuy() {
       </div>
 
       <p className="text-center text-xs text-gray-400 mt-10">
-        Questions about an order? Email support@lifetools.com or message us
-        on WhatsApp — we typically reply within 24 hours, Monday to Saturday.
+         Delivery time of 7 to 15 business days, depending on the region – it may arrive sooner.
       </p>
     </section>
   );

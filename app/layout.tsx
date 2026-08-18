@@ -22,14 +22,20 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen flex flex-col">
         <CartProvider>
-          <FreeShippingBanner />
-          <Header />
-          <SocialBar />
-          <div className="bg-brand-navy text-white text-center text-sm font-semibold py-2">
-            **All purchases are finalized via email**
+          {/* Only the top bars are sticky - they stay fixed on scroll */}
+          <div className="sticky top-0 z-40">
+            <FreeShippingBanner />
+            <Header />
+            <SocialBar />
+            <div className="bg-brand-navy text-white text-center text-sm font-semibold py-2">
+              **All purchases are finalized via email**
+            </div>
           </div>
+
+          {/* Main content and footer scroll normally underneath */}
           <main className="flex-1">{children}</main>
           <Footer />
+
           <CartDrawer />
         </CartProvider>
       </body>

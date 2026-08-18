@@ -13,7 +13,7 @@ export default function Carousel({ banners }: { banners: Banner[] }) {
     if (slides.length <= 1) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 8000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
