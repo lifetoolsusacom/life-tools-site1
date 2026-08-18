@@ -11,8 +11,8 @@ export default function Header() {
 
   return (
     <header className="bg-brand-navy text-white">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-3 h-14 overflow-visible relative">
-        <Link href="/" className="flex items-center shrink-0 relative z-10 ml 4">
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4 h-14 overflow-visible relative">
+        <Link href="/" className="flex items-center shrink-0 relative z-10">
           <span className="relative w-20 h-20 shrink-0 mt-4">
             <Image
               src="/logo.png"
@@ -23,7 +23,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <form action="/#products" className="flex-1 max-w-2xl mx 4">
+        <form action="/#products" className="flex-1 max-w-2xl">
           <div className="relative">
             <input
               type="text"
