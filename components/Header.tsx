@@ -22,82 +22,86 @@ export default function Header() {
 
   return (
     <header className="bg-brand-navy text-white relative">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4 h-14 overflow-visible relative">
-        <Link href="/" className="flex items-center shrink-0 relative z-10">
-          <span className="relative w-20 h-20 shrink-0 mt-4">
-            <Image src="/logo.png" alt="Life Tools" fill className="object-contain" />
-          </span>
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 flex items-center gap-4 h-14 overflow-visible relative">
+        <div className="flex-1 flex items-center justify-center gap-4">
+          <Link href="/" className="flex items-center shrink-0 relative z-10">
+            <span className="relative w-20 h-20 shrink-0 mt-4">
+              <Image src="/logo.png" alt="Life Tools" fill className="object-contain" />
+            </span>
+          </Link>
 
-        <Link href="/" className="lifetools-brand-wrap shrink-0 select-none">
-          <span className="lifetools-brand text-white text-2xl leading-none">Life</span>
-          <span className="lifetools-heart" aria-hidden="true">♥</span>
-          <span className="lifetools-brand text-white text-2xl leading-none"> Tools</span>
-        </Link>
+          <Link href="/" className="lifetools-brand-wrap shrink-0 select-none">
+            <span className="lifetools-brand text-white text-2xl leading-none">Life</span>
+            <span className="lifetools-heart" aria-hidden="true">♥</span>
+            <span className="lifetools-brand text-white text-2xl leading-none"> Tools</span>
+          </Link>
 
-        <form action="/#products" className="flex-1 max-w-2xl">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder={t("searchPlaceholder")}
-              className="w-full rounded-md pl-4 pr-10 py-2 text-brand-navyDark text-sm focus:outline-none"
-            />
+          <form action="/#products" className="flex-1 max-w-2xl">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder={t("searchPlaceholder")}
+                className="w-full rounded-md pl-4 pr-10 py-2 text-brand-navyDark text-sm focus:outline-none"
+              />
+              <button
+                type="submit"
+                aria-label="Search"
+                className="absolute right-0 top-0 h-full px-3 flex items-center justify-center text-brand-navyDark"
+              >
+                <SearchIcon className="w-5 h-5" />
+              </button>
+            </div>
+          </form>
+
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy via WhatsApp"
+            className="hidden sm:flex items-center gap-2 shrink-0 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition whitespace-nowrap"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+            <span>{t("buyViaWhatsApp")}</span>
+          </a>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy via WhatsApp"
+            className="sm:hidden flex items-center justify-center shrink-0 bg-green-600 hover:bg-green-500 text-white p-2 rounded-full transition"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+          </a>
+
+          <div className="relative shrink-0">
             <button
-              type="submit"
-              aria-label="Search"
-              className="absolute right-0 top-0 h-full px-3 flex items-center justify-center text-brand-navyDark"
+              onClick={() => (isOpen ? closeCart() : openCart())}
+              aria-label="Open cart"
+              className="hidden md:flex items-center gap-2 text-sm hover:text-brand-yellow transition"
             >
-              <SearchIcon className="w-5 h-5" />
+              <CartIcon className="w-6 h-6" />
+              <span>
+                {totalItems} {totalItems === 1 ? t("item") : t("items")} · {formatPrice(totalCents)}
+              </span>
+            </button>
+            <button
+              onClick={() => (isOpen ? closeCart() : openCart())}
+              aria-label="Open cart"
+              className="md:hidden flex items-center gap-1"
+            >
+              <CartIcon className="w-6 h-6" />
+              {totalItems > 0 && (
+                <span className="bg-brand-orange text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+                  {totalItems}
+                </span>
+              )}
             </button>
           </div>
-        </form>
-
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Buy via WhatsApp"
-          className="hidden sm:flex items-center gap-2 shrink-0 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition whitespace-nowrap"
-        >
-          <WhatsAppIcon className="w-5 h-5" />
-          <span>{t("buyViaWhatsApp")}</span>
-        </a>
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Buy via WhatsApp"
-          className="sm:hidden flex items-center justify-center shrink-0 bg-green-600 hover:bg-green-500 text-white p-2 rounded-full transition"
-        >
-          <WhatsAppIcon className="w-5 h-5" />
-        </a>
-
-        <div className="relative shrink-0">
-          <button
-            onClick={() => (isOpen ? closeCart() : openCart())}
-            aria-label="Open cart"
-            className="hidden md:flex items-center gap-2 text-sm hover:text-brand-yellow transition"
-          >
-            <CartIcon className="w-6 h-6" />
-            <span>
-              {totalItems} {totalItems === 1 ? t("item") : t("items")} · {formatPrice(totalCents)}
-            </span>
-          </button>
-          <button
-            onClick={() => (isOpen ? closeCart() : openCart())}
-            aria-label="Open cart"
-            className="md:hidden flex items-center gap-1"
-          >
-            <CartIcon className="w-6 h-6" />
-            {totalItems > 0 && (
-              <span className="bg-brand-orange text-white text-xs font-bold rounded-full px-1.5 py-0.5">
-                {totalItems}
-              </span>
-            )}
-          </button>
         </div>
 
-        <LanguageDropdown />
+        <div className="shrink-0 pl-3 border-l border-white/15 ml-2">
+          <LanguageDropdown />
+        </div>
       </div>
 
       <div className="bg-brand-navy text-white text-sm">
