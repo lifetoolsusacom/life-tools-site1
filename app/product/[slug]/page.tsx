@@ -99,10 +99,10 @@ function ProductPageContent({
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-12">
+    <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-[1.3fr_1fr] gap-12">
       {/* Image column: large, dominant product photo */}
       <div>
-        <div className="relative w-full h-[420px] md:h-[520px] bg-white border border-gray-100 rounded-lg overflow-hidden">
+        <div className="relative w-full h-[520px] md:h-[680px] bg-white border border-gray-100 rounded-lg overflow-hidden">
           <Image
             src={gallery[activeImage]}
             alt={product.name}
@@ -118,7 +118,7 @@ function ProductPageContent({
               <button
                 key={img}
                 onClick={() => setActiveImage(i)}
-                className={`relative w-20 h-20 rounded-md overflow-hidden border-2 bg-white transition ${
+                className={`relative w-24 h-24 rounded-md overflow-hidden border-2 bg-white transition ${
                   i === activeImage ? "border-brand-orange" : "border-gray-200 hover:border-gray-300"
                 }`}
               >
