@@ -2,26 +2,40 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { CartIcon, SearchIcon } from "@/components/Icons";
+import { CartIcon, SearchIcon, WhatsAppIcon, FacebookIcon, EmailIcon } from "@/components/Icons";
 import { useCart } from "@/lib/CartContext";
 import { formatPrice } from "@/lib/products";
 import { useLanguage } from "@/lib/LanguageContext";
 import { LANGUAGES } from "@/lib/i18n";
 
+const FACEBOOK_URL = "https://facebook.com/worldtools";
+const EMAIL_ADDRESS = "support@lifetools.com";
+const WHATSAPP_NUMBER = "19096693801";
+const WHATSAPP_MESSAGE = "Hi, I want to make my purchase! 😊";
+
 export default function Header() {
-  const { totalItems, totalCents, openCart } = useCart();
+  const { totalItems, totalCents, isOpen, openCart, closeCart } = useCart();
   const { lang, setLang, t } = useLanguage();
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    WHATSAPP_MESSAGE
+  )}`;
 
   return (
-    <header className="bg-brand-navy text-white">
+    <header className="bg-brand-navy text-white relative">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4 h-14 overflow-visible relative">
-        <Link href="/" className="flex items-center shrink-0 relative z-10 w-20 h-20">
-          <span className="absolute left-6 -top-2 w-20 h-20 mt-3">
+        <Link href="/" className="flex items-center shrink-0 relative z-10">
+          <span className="relative w-20 h-20 shrink-0 mt-4">
             <Image src="/logo.png" alt="Life Tools" fill className="object-contain" />
           </span>
         </Link>
 
-        <form action="/products" className="flex-1 max-w-2xl">
+        <Link href="/" className="lifetools-brand-wrap shrink-0 select-none">
+          <span className="lifetools-brand text-white text-2xl leading-none">Life</span>
+          <span className="lifetools-heart" aria-hidden="true">♥</span>
+          <span className="lifetools-brand text-white text-2xl leading-none"> Tools</span>
+        </Link>
+
+        <form action="/#products" className="flex-1 max-w-2xl">
           <div className="relative">
             <input
               type="text"
@@ -38,7 +52,7 @@ export default function Header() {
           </div>
         </form>
 
-        <div className="hidden md:flex items-center gap-1 shrink-0">
+        <div className="hidden lg:flex items-center gap-1 shrink-0">
           {LANGUAGES.map((l) => (
             <button
               key={l.code}
@@ -53,32 +67,53 @@ export default function Header() {
           ))}
         </div>
 
-        <button
-          onClick={openCart}
-          aria-label="Open cart"
-          className="hidden md:flex items-center gap-2 text-sm shrink-0 hover:text-brand-yellow transition"
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Buy via WhatsApp"
+          className="hidden sm:flex items-center gap-2 shrink-0 bg-green-600 hover:bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full transition whitespace-nowrap"
         >
-          <CartIcon className="w-6 h-6" />
-          <span>
-            {totalItems} {totalItems === 1 ? t("item") : t("items")} · {formatPrice(totalCents)}
-          </span>
-        </button>
+          <WhatsAppIcon className="w-5 h-5" />
+          <span>{t("buyViaWhatsApp")}</span>
+        </a>
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Buy via WhatsApp"
+          className="sm:hidden flex items-center justify-center shrink-0 bg-green-600 hover:bg-green-500 text-white p-2 rounded-full transition"
+        >
+          <WhatsAppIcon className="w-5 h-5" />
+        </a>
 
-        <button
-          onClick={openCart}
-          aria-label="Open cart"
-          className="md:hidden flex items-center gap-1 shrink-0 relative"
-        >
-          <CartIcon className="w-6 h-6" />
-          {totalItems > 0 && (
-            <span className="bg-brand-orange text-white text-[11px] font-bold rounded-full px-1.5 py-0.5">
-              {totalItems}
+        <div className="relative shrink-0">
+          <button
+            onClick={() => (isOpen ? closeCart() : openCart())}
+            aria-label="Open cart"
+            className="hidden md:flex items-center gap-2 text-sm hover:text-brand-yellow transition"
+          >
+            <CartIcon className="w-6 h-6" />
+            <span>
+              {totalItems} {totalItems === 1 ? t("item") : t("items")} · {formatPrice(totalCents)}
             </span>
-          )}
-        </button>
+          </button>
+          <button
+            onClick={() => (isOpen ? closeCart() : openCart())}
+            aria-label="Open cart"
+            className="md:hidden flex items-center gap-1"
+          >
+            <CartIcon className="w-6 h-6" />
+            {totalItems > 0 && (
+              <span className="bg-brand-orange text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+                {totalItems}
+              </span>
+            )}
+          </button>
+        </div>
       </div>
 
-      <div className="md:hidden flex items-center justify-center gap-3 pb-2">
+      <div className="lg:hidden flex items-center justify-center gap-3 pb-2 bg-brand-navy">
         {LANGUAGES.map((l) => (
           <button
             key={l.code}
@@ -91,6 +126,39 @@ export default function Header() {
             {l.flag}
           </button>
         ))}
+      </div>
+
+      <div className="bg-brand-navy text-white text-sm">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-10">
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Life Tools on Facebook"
+            className="flex items-center gap-2 hover:text-brand-yellow transition"
+          >
+            <FacebookIcon className="w-5 h-5" />
+            <span>Facebook</span>
+          </a>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat with Life Tools on WhatsApp"
+            className="flex items-center gap-2 hover:text-brand-yellow transition"
+          >
+            <WhatsAppIcon className="w-5 h-5" />
+            <span>Whatsapp</span>
+          </a>
+          <a
+            href={`mailto:${EMAIL_ADDRESS}`}
+            aria-label="Email Life Tools support"
+            className="flex items-center gap-2 hover:text-brand-yellow transition"
+          >
+            <EmailIcon className="w-5 h-5" />
+            <span>Email</span>
+          </a>
+        </div>
       </div>
     </header>
   );
