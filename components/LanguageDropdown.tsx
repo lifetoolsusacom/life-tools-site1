@@ -4,6 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 import { LANGUAGES } from "@/lib/i18n";
 
+function FlagImg({ countryCode, label }: { countryCode: string; label: string }) {
+  return (
+    <img
+      src={`https://flagcdn.com/24x18/${countryCode}.png`}
+      srcSet={`https://flagcdn.com/48x36/${countryCode}.png 2x, https://flagcdn.com/72x54/${countryCode}.png 3x`}
+      width={20}
+      height={15}
+      alt={label}
+      className="rounded-sm shrink-0 object-cover"
+    />
+  );
+}
+
 export default function LanguageDropdown() {
   const { lang, setLang } = useLanguage();
   const [open, setOpen] = useState(false);
@@ -29,7 +42,7 @@ export default function LanguageDropdown() {
         aria-expanded={open}
         className="flex items-center gap-1.5 text-sm px-2 py-1.5 rounded-md hover:bg-white/10 transition"
       >
-        <span className="text-lg leading-none">{current.flag}</span>
+        <FlagImg countryCode={current.countryCode} label={current.label} />
         <span className="hidden sm:inline">{current.label}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +69,7 @@ export default function LanguageDropdown() {
                 l.code === lang ? "font-semibold" : ""
               }`}
             >
-              <span className="text-lg leading-none">{l.flag}</span>
+              <FlagImg countryCode={l.countryCode} label={l.label} />
               <span>{l.label}</span>
             </button>
           ))}

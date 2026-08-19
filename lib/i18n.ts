@@ -1,9 +1,9 @@
 export type Language = "en" | "es" | "pt";
 
-export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
-  { code: "en", label: "English", flag: "🇺🇸" },
-  { code: "es", label: "Español", flag: "🇪🇸" },
-  { code: "pt", label: "Português", flag: "🇧🇷" },
+export const LANGUAGES: { code: Language; label: string; countryCode: string }[] = [
+  { code: "en", label: "English", countryCode: "us" },
+  { code: "es", label: "Español", countryCode: "es" },
+  { code: "pt", label: "Português", countryCode: "br" },
 ];
 
 type Dictionary = Record<string, { en: string; es: string; pt: string }>;
