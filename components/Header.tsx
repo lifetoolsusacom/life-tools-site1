@@ -26,11 +26,11 @@ export default function Header() {
           </span>
         </Link>
 
-        <div className="lifetools-brand-wrap shrink-0 select-none pointer-events-none">
+        <Link href="/" className="lifetools-brand-wrap shrink-0 select-none">
           <span className="lifetools-brand text-white text-2xl leading-none">Life</span>
           <span className="lifetools-heart" aria-hidden="true">♥</span>
           <span className="lifetools-brand text-white text-2xl leading-none"> Tools</span>
-        </div>
+        </Link>
 
         <form action="/#products" className="flex-1 max-w-2xl">
           <div className="relative">
@@ -61,7 +61,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="bg-brand-navy text-white text-sm border-t border-white/10">
+      <div className="bg-brand-navy text-white text-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-10">
           <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Life Tools on Facebook" className="flex items-center gap-2 hover:text-brand-yellow transition"><FacebookIcon className="w-5 h-5" /><span>Facebook</span></a>
           <a href={whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Chat with Life Tools on WhatsApp" className="flex items-center gap-2 hover:text-brand-yellow transition"><WhatsAppIcon className="w-5 h-5" /><span>Whatsapp</span></a>

@@ -24,7 +24,7 @@ export default function RootLayout({
           <div className="sticky top-0 z-40">
             <FreeShippingBanner />
             <Header />
-            <div className="bg-brand-navy text-white text-center text-sm font-semibold py-2">
+            <div className="bg-brand-navyDark text-white text-center text-sm font-semibold py-2">
               **All purchases are finalized via email**
             </div>
           </div>
