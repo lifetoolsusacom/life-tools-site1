@@ -21,7 +21,7 @@ export default function Header() {
     <header className="bg-brand-navy text-white relative">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4 h-14 overflow-visible relative">
         <Link href="/" className="flex items-center shrink-0 relative z-10">
-          <span className="relative w-20 h-20 shrink-0 mt-4">
+          <span className="relative w-20 h-20 shrink-0 mt-4 ml-4">
             <Image src="/logo.png" alt="Life Tools" fill className="object-contain" />
           </span>
         </Link>

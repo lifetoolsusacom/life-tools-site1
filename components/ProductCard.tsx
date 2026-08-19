@@ -21,8 +21,6 @@ export default function ProductCard({ product }: { product: Product }) {
   const [isHovered, setIsHovered] = useState(false);
   const onSale = !!product.compareAtCents && product.compareAtCents > product.priceCents;
 
-  // Second image for the hover effect: first entry in `images` that isn't
-  // the same as the main imageUrl. Falls back to the main image if none.
   const hoverImage =
     product.images?.find((img) => img !== product.imageUrl) ?? product.imageUrl;
 
@@ -45,12 +43,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
           {product.badge && (
             <span className="absolute top-2 left-2 bg-brand-orange text-white text-[11px] font-semibold px-2 py-1 rounded flex items-center gap-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-3 h-3"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3">
                 <path d="M13 2 3 14h6l-1 8 11-14h-7l1-6z" />
               </svg>
               {product.badge}
@@ -59,9 +52,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
       </Link>
 
-      {product.brand && (
-        <p className="text-xs text-gray-500">{product.brand}</p>
-      )}
+      {product.brand && <p className="text-xs text-gray-500">{product.brand}</p>}
 
       <Link href={`/product/${product.slug}`}>
         <h3 className="text-sm font-medium text-brand-navyDark leading-snug hover:underline min-h-[40px]">
@@ -72,17 +63,11 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="mt-2 mb-1">
         {onSale ? (
           <p className="text-sm">
-            <span className="font-bold text-brand-navyDark">
-              {formatPrice(product.priceCents)}
-            </span>{" "}
-            <span className="text-gray-400 line-through text-xs">
-              {formatPrice(product.compareAtCents!)}
-            </span>
+            <span className="font-bold text-brand-navyDark">{formatPrice(product.priceCents)}</span>{" "}
+            <span className="text-gray-400 line-through text-xs">{formatPrice(product.compareAtCents!)}</span>
           </p>
         ) : (
-          <p className="font-bold text-brand-navyDark text-sm">
-            {formatPrice(product.priceCents)}
-          </p>
+          <p className="font-bold text-brand-navyDark text-sm">{formatPrice(product.priceCents)}</p>
         )}
       </div>
 
@@ -98,12 +83,8 @@ export default function ProductCard({ product }: { product: Product }) {
       )}
 
       <div className="flex items-center justify-center gap-1.5 mb-3 text-xs">
-        <span
-          className={`inline-block w-2 h-2 rounded-full ${
-            product.inStock ? "bg-brand-green" : "bg-gray-400"
-          }`}
-        />
-        <span className={product.inStock ? "text-brand-green" : "text-gray-400"}>
+        <span className={`inline-block w-2 h-2 rounded-full ${product.inStock ? "bg-[#39e75f]" : "bg-gray-400"}`} />
+        <span className={product.inStock ? "text-[#39e75f] font-semibold" : "text-gray-400"}>
           {product.inStock ? "In stock - Quick Ship" : "Out of stock"}
         </span>
       </div>
