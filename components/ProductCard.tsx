@@ -55,6 +55,19 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
       )}
 
+      <p
+        className={`mt-1 text-[11px] font-semibold flex items-center justify-center gap-1 ${
+          product.inStock ? "text-[#39e75f]" : "text-red-500"
+        }`}
+      >
+        <span
+          className={`inline-block w-1.5 h-1.5 rounded-full ${
+            product.inStock ? "bg-[#39e75f]" : "bg-red-500"
+          }`}
+        />
+        {product.inStock ? t("inStockQuickShip") : t("outOfStock")}
+      </p>
+
       <div className="mt-2 mb-3">
         {onSale ? (
           <p className="text-sm">

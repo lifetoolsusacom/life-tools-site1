@@ -12,7 +12,7 @@ import { useTranslatedText } from "@/lib/useTranslatedText";
 function Stars({ rating }: { rating: number }) {
   const full = Math.round(rating);
   return (
-    <span className="star text-lg" aria-label={`${rating} out of 5 stars`}>
+    <span className="text-brand-yellow text-lg leading-none" aria-label={`${rating} out of 5 stars`}>
       {"★".repeat(full)}
       {"☆".repeat(5 - full)}
     </span>
@@ -223,10 +223,12 @@ function ProductPageContent({
         <button
           onClick={handleAddToCart}
           disabled={!product.inStock}
-          className={`mt-4 w-full text-center font-semibold py-3.5 rounded-full transition text-base ${
+          className={`mt-4 w-full text-center font-semibold py-3.5 rounded-full transition text-base border ${
             product.inStock
-              ? "bg-brand-orange text-white hover:bg-orange-600"
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
+              ? onSale
+                ? "bg-green-800 text-white border-brand-green hover:bg-green-500"
+                : "bg-white text-brand-navyDark border-brand-navyDark hover:bg-brand-navyDark hover:text-white"
+              : "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed"
           }`}
         >
           {product.inStock ? t("addToCart") : t("outOfStock")}
