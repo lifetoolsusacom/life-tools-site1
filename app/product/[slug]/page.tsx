@@ -243,20 +243,6 @@ function ProductPageContent({
           <AccordionItem title={t("shippingInformation")}>
             {t("shippingInfoBody")}
           </AccordionItem>
-          <AccordionItem title={t("warrantySupport")}>
-            {t("warrantySupportBody").split("support@lifetools.com")[0]}
-            <a href="mailto:support@lifetools.com" className="text-brand-orange hover:underline">
-              support@lifetools.com
-            </a>
-            {t("warrantySupportBody").split("support@lifetools.com")[1]}
-          </AccordionItem>
-          <AccordionItem title={t("returnsRefund")}>
-            {t("returnsRefundBody").split("support@lifetools.com")[0]}
-            <a href="mailto:support@lifetools.com" className="text-brand-orange hover:underline">
-              support@lifetools.com
-            </a>
-            {t("returnsRefundBody").split("support@lifetools.com")[1]}
-          </AccordionItem>
         </div>
       </div>
     </div>
