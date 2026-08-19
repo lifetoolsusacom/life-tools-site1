@@ -6,7 +6,7 @@ import { CartIcon, SearchIcon, WhatsAppIcon, FacebookIcon, EmailIcon } from "@/c
 import { useCart } from "@/lib/CartContext";
 import { formatPrice } from "@/lib/products";
 import { useLanguage } from "@/lib/LanguageContext";
-import { LANGUAGES } from "@/lib/i18n";
+import LanguageDropdown from "@/components/LanguageDropdown";
 
 const FACEBOOK_URL = "https://facebook.com/worldtools";
 const EMAIL_ADDRESS = "support@lifetools.com";
@@ -15,7 +15,7 @@ const WHATSAPP_MESSAGE = "Hi, I want to make my purchase! 😊";
 
 export default function Header() {
   const { totalItems, totalCents, isOpen, openCart, closeCart } = useCart();
-  const { lang, setLang, t } = useLanguage();
+  const { t } = useLanguage();
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     WHATSAPP_MESSAGE
   )}`;
@@ -51,21 +51,6 @@ export default function Header() {
             </button>
           </div>
         </form>
-
-        <div className="hidden lg:flex items-center gap-1 shrink-0">
-          {LANGUAGES.map((l) => (
-            <button
-              key={l.code}
-              onClick={() => setLang(l.code)}
-              aria-label={l.label}
-              className={`text-lg px-1.5 py-1 rounded transition ${
-                lang === l.code ? "opacity-100 bg-white/10" : "opacity-50 hover:opacity-80"
-              }`}
-            >
-              {l.flag}
-            </button>
-          ))}
-        </div>
 
         <a
           href={whatsappHref}
@@ -111,21 +96,8 @@ export default function Header() {
             )}
           </button>
         </div>
-      </div>
 
-      <div className="lg:hidden flex items-center justify-center gap-3 pb-2 bg-brand-navy">
-        {LANGUAGES.map((l) => (
-          <button
-            key={l.code}
-            onClick={() => setLang(l.code)}
-            aria-label={l.label}
-            className={`text-lg px-1.5 py-1 rounded transition ${
-              lang === l.code ? "opacity-100 bg-white/10" : "opacity-50 hover:opacity-80"
-            }`}
-          >
-            {l.flag}
-          </button>
-        ))}
+        <LanguageDropdown />
       </div>
 
       <div className="bg-brand-navy text-white text-sm">
