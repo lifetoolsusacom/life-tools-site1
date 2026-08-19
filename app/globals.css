@@ -28,6 +28,36 @@ body {
   font-display: swap;
 }
 
+.lifetools-brand-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
 .lifetools-brand {
   font-family: "Brosign Brush", cursive;
+}
+
+.lifetools-heart {
+  position: absolute;
+  left: 12px;
+  top: -5px;
+  color: #ef4444;
+  font-size: 11px;
+  line-height: 1;
+  transform-origin: center;
+  animation: lifetools-heart-pulse 4s ease-in-out infinite;
+}
+
+@keyframes lifetools-heart-pulse {
+  0%, 82%, 100% {
+    transform: scale(1);
+  }
+  87% {
+    transform: scale(1.65);
+  }
+  92% {
+    transform: scale(1);
+  }
 }
