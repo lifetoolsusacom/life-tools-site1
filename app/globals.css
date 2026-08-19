@@ -41,9 +41,9 @@ body {
 
 .lifetools-heart {
   position: absolute;
-  left: 13px;
-  top: 2px;
-  color: #ef4444;
+  left: 14px;
+  top: -3px;
+  color: #e03030;
   font-size: 15px;
   line-height: 1;
   transform: rotate(15deg);
