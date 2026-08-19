@@ -18,3 +18,16 @@ body {
 .star {
   color: #1c3b63;
 }
+
+@font-face {
+  font-family: "Brosign Brush";
+  src: url("/fonts/BrosignBrush.woff2") format("woff2"),
+       url("/fonts/BrosignBrush.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.lifetools-brand {
+  font-family: "Brosign Brush", cursive;
+}
