@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Product, formatPrice } from "@/lib/products";
 import { useCart } from "@/lib/CartContext";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -22,12 +23,37 @@ export default function ProductCard({ product }: { product: Product }) {
   const { lang, t } = useLanguage();
   const name = useTranslatedText(product.name, lang);
   const onSale = !!product.compareAtCents && product.compareAtCents > product.priceCents;
+  const [isHovered, setIsHovered] = useState(false);
+
+  const secondImage = product.images && product.images.length > 1 ? product.images[1] : null;
 
   return (
     <div className="flex flex-col text-center px-2">
-      <Link href={`/product/${product.slug}`} className="block relative">
+      <Link
+        href={`/product/${product.slug}`}
+        className="block relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <div className="relative w-full h-40 md:h-48 mb-3 overflow-hidden rounded-md bg-white flex items-center justify-center">
-          <Image src={product.imageUrl} alt={name} fill className="object-contain p-3" />
+          <Image
+            src={product.imageUrl}
+            alt={name}
+            fill
+            className={`object-contain p-3 transition-opacity duration-300 ${
+              secondImage && isHovered ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          {secondImage && (
+            <Image
+              src={secondImage}
+              alt={`${name} 2`}
+              fill
+              className={`object-contain p-3 absolute inset-0 transition-opacity duration-300 ${
+                isHovered ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          )}
           {product.badge && (
             <span className="absolute top-2 left-2 bg-brand-orange text-white text-[11px] font-semibold px-2 py-1 rounded">
               {product.badge}
