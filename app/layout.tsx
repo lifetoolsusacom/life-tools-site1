@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import FreeShippingBanner from "@/components/FreeShippingBanner";
 import CartDrawer from "@/components/CartDrawer";
 import { CartProvider } from "@/lib/CartContext";
+import { LanguageProvider } from "@/lib/LanguageContext";
+import AnnouncementBar from "@/components/AnnouncementBar";
 
 export const metadata: Metadata = {
   title: "Life Tools | Ceramic Tile & Construction Tools",
@@ -20,20 +22,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
-        <CartProvider>
-          <div className="sticky top-0 z-40">
-            <FreeShippingBanner />
-            <Header />
-            <div className="bg-brand-navyDark text-white text-center text-sm font-semibold py-2">
-              **All purchases are finalized via email**
+        <LanguageProvider>
+          <CartProvider>
+            <div className="sticky top-0 z-40">
+              <FreeShippingBanner />
+              <Header />
+              <AnnouncementBar />
             </div>
-          </div>
 
-          <main className="flex-1">{children}</main>
-          <Footer />
+            <main className="flex-1">{children}</main>
+            <Footer />
 
-          <CartDrawer />
-        </CartProvider>
+            <CartDrawer />
+          </CartProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

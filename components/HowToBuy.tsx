@@ -1,48 +1,45 @@
-import { CartIcon, MailCheckIcon, LockIcon, TruckIcon } from "@/components/Icons";
+"use client";
 
-// "How to Buy" section - explains the full purchase flow to first-time
-// visitors: add to cart -> checkout by email -> payment link -> shipping.
-// Place this section above the FAQ section on the homepage.
+import { CartIcon, MailCheckIcon, LockIcon, TruckIcon } from "@/components/Icons";
+import { useLanguage } from "@/lib/LanguageContext";
+
 export default function HowToBuy() {
+  const { t } = useLanguage();
+
   const steps = [
     {
       number: "1",
       icon: CartIcon,
-      title: "Add items to your cart",
-      description:
-        "Browse our tools and click \"Add to cart\" on each product you want. You can add as many items as you like, and adjust quantities anytime from the cart.",
+      title: t("howToBuyStep1Title"),
+      description: t("howToBuyStep1Desc"),
     },
     {
       number: "2",
       icon: MailCheckIcon,
-      title: "Click \"Checkout\"",
-      description:
-        "Open your cart and review your items. When you're ready, click the \"Checkout\" button. This will open your email app with a pre-filled message listing your order.",
+      title: t("howToBuyStep2Title"),
+      description: t("howToBuyStep2Desc"),
     },
     {
       number: "3",
       icon: LockIcon,
-      title: "Add your details and send",
-      description:
-        "Enter all the requested details into the pre-filled email, then send it to us. We will reply with a secure payment link to complete your purchase.",
+      title: t("howToBuyStep3Title"),
+      description: t("howToBuyStep3Desc"),
     },
     {
       number: "4",
       icon: TruckIcon,
-      title: "Track your order by email",
-      description:
-        "Once your payment is confirmed, we prepare your order for shipping. You will receive email updates at every step, including your tracking number once your package ships.",
+      title: t("howToBuyStep4Title"),
+      description: t("howToBuyStep4Desc"),
     },
   ];
 
   return (
     <section id="how-to-buy" className="max-w-7xl mx-auto px-4 py-12 border-t border-gray-200">
       <h2 className="text-2xl font-bold text-center text-brand-navyDark mb-2">
-        How to Buy
+        {t("howToBuyTitle")}
       </h2>
       <p className="text-center text-sm text-gray-500 max-w-2xl mx-auto mb-10">
-        Shopping with Life Tools is simple and secure. Here is exactly how
-        it works, from adding items to your cart to receiving your order.
+        {t("howToBuySubtitle")}
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -56,20 +53,14 @@ export default function HowToBuy() {
                   {step.number}
                 </span>
               </div>
-              <h3 className="font-semibold text-brand-navyDark mb-2">
-                {step.title}
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {step.description}
-              </p>
+              <h3 className="font-semibold text-brand-navyDark mb-2">{step.title}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
             </div>
           );
         })}
       </div>
 
-      <p className="text-center text-xs text-gray-400 mt-10">
-         Delivery time of 7 to 15 business days, depending on the region – it may arrive sooner.
-      </p>
+      <p className="text-center text-xs text-gray-400 mt-10">{t("howToBuyDeliveryNote")}</p>
     </section>
   );
 }

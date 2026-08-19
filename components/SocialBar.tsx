@@ -1,11 +1,15 @@
-import { FacebookIcon, WhatsAppIcon, EmailIcon } from "@/components/Icons";
+"use client";
 
-// Update these links to your real Facebook page, support email, and WhatsApp number.
+import { FacebookIcon, WhatsAppIcon, EmailIcon } from "@/components/Icons";
+import { useLanguage } from "@/lib/LanguageContext";
+
 const FACEBOOK_URL = "https://facebook.com/worldtools";
 const EMAIL_ADDRESS = "support@lifetools.com";
-const WHATSAPP_NUMBER = "19096693801"; // country code + number, digits only
+const WHATSAPP_NUMBER = "19096693801";
 
 export default function SocialBar() {
+  const { t } = useLanguage();
+
   return (
     <div className="bg-brand-navyDark text-white text-sm">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-center gap-10">
@@ -17,9 +21,8 @@ export default function SocialBar() {
           className="flex items-center gap-2 hover:text-brand-yellow transition"
         >
           <FacebookIcon className="w-5 h-5" />
-          <span>Facebook</span>
+          <span>{t("facebook")}</span>
         </a>
-
         <a
           href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
@@ -28,16 +31,15 @@ export default function SocialBar() {
           className="flex items-center gap-2 hover:text-brand-yellow transition"
         >
           <WhatsAppIcon className="w-5 h-5" />
-          <span>Whatsapp</span>
+          <span>{t("whatsapp")}</span>
         </a>
-
         <a
           href={`mailto:${EMAIL_ADDRESS}`}
           aria-label="Email Life Tools support"
           className="flex items-center gap-2 hover:text-brand-yellow transition"
         >
           <EmailIcon className="w-5 h-5" />
-          <span>Email</span>
+          <span>{t("email")}</span>
         </a>
       </div>
     </div>
