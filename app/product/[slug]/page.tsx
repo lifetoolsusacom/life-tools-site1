@@ -6,13 +6,15 @@ import { notFound, useParams } from "next/navigation";
 import { getProductBySlug, formatPrice, Product } from "@/lib/products";
 import { useCart } from "@/lib/CartContext";
 import { TruckIcon, MailCheckIcon, LockIcon } from "@/components/Icons";
+import { useLanguage } from "@/lib/LanguageContext";
+import { useTranslatedText } from "@/lib/useTranslatedText";
 
 function Stars({ rating }: { rating: number }) {
   const full = Math.round(rating);
   return (
     <span className="star text-lg" aria-label={`${rating} out of 5 stars`}>
-      {"\u2605".repeat(full)}
-      {"\u2606".repeat(5 - full)}
+      {"★".repeat(full)}
+      {"☆".repeat(5 - full)}
     </span>
   );
 }
@@ -89,6 +91,10 @@ function ProductPageContent({
   addItem: (product: Product, quantity?: number) => void;
   openCart: () => void;
 }) {
+  const { lang, t } = useLanguage();
+  const name = useTranslatedText(product.name, lang);
+  const description = useTranslatedText(product.description, lang);
+
   const gallery = product.images.length ? product.images : [product.imageUrl];
   const onSale = !!product.compareAtCents && product.compareAtCents > product.priceCents;
   const savingsCents = onSale ? product.compareAtCents! - product.priceCents : 0;
@@ -105,7 +111,7 @@ function ProductPageContent({
         <div className="relative w-full h-[520px] md:h-[680px] bg-white border border-gray-100 rounded-lg overflow-hidden">
           <Image
             src={gallery[activeImage]}
-            alt={product.name}
+            alt={name}
             fill
             priority
             className="object-contain p-6"
@@ -122,7 +128,7 @@ function ProductPageContent({
                   i === activeImage ? "border-brand-orange" : "border-gray-200 hover:border-gray-300"
                 }`}
               >
-                <Image src={img} alt={`${product.name} ${i + 1}`} fill className="object-contain p-1" />
+                <Image src={img} alt={`${name} ${i + 1}`} fill className="object-contain p-1" />
               </button>
             ))}
           </div>
@@ -134,7 +140,7 @@ function ProductPageContent({
         {product.brand && (
           <p className="text-xs text-gray-500 uppercase tracking-wide">{product.brand}</p>
         )}
-        <h1 className="text-2xl font-bold text-brand-navyDark mt-1">{product.name}</h1>
+        <h1 className="text-2xl font-bold text-brand-navyDark mt-1">{name}</h1>
 
         <div className="flex items-baseline gap-3 mt-3">
           {onSale ? (
@@ -144,7 +150,7 @@ function ProductPageContent({
                 {formatPrice(product.compareAtCents!)}
               </span>
               <span className="text-xs font-semibold bg-orange-100 text-brand-orange px-2 py-1 rounded">
-                Save {formatPrice(savingsCents)}
+                {t("saveAmount")} {formatPrice(savingsCents)}
               </span>
             </>
           ) : (
@@ -158,7 +164,9 @@ function ProductPageContent({
           <div className="flex items-center gap-2 mt-2">
             <Stars rating={product.rating} />
             {product.reviewCount ? (
-              <span className="text-sm text-gray-500">{product.reviewCount} reviews</span>
+              <span className="text-sm text-gray-500">
+                {product.reviewCount} {product.reviewCount === 1 ? t("review") : t("reviews")}
+              </span>
             ) : null}
           </div>
         )}
@@ -167,14 +175,13 @@ function ProductPageContent({
           <p className="flex items-center gap-2">
             <TruckIcon className="w-4 h-4 shrink-0" />
             <span>
-              <span className="font-semibold">Free shipping:</span> on orders over $199.90
-              (contiguous US only).
+              <span className="font-semibold">{t("freeShippingLabel")}</span> {t("freeShippingDetail")}
             </span>
           </p>
           <p className="flex items-center gap-2">
             <MailCheckIcon className="w-4 h-4 shrink-0" />
             <span>
-              <span className="font-semibold">Order updates:</span> sent by email after checkout.
+              <span className="font-semibold">{t("orderUpdatesLabel")}</span> {t("orderUpdatesDetail")}
             </span>
           </p>
         </div>
@@ -189,11 +196,11 @@ function ProductPageContent({
               product.inStock ? "bg-[#39e75f]" : "bg-red-500"
             }`}
           />
-          {product.inStock ? "In stock - Quick Ship" : "Out of stock"}
+          {product.inStock ? t("inStockQuickShip") : t("outOfStock")}
         </p>
 
         <div className="flex items-center gap-3 mt-5">
-          <span className="text-sm font-medium text-brand-navyDark">Quantity</span>
+          <span className="text-sm font-medium text-brand-navyDark">{t("quantity")}</span>
           <div className="flex items-center border border-gray-300 rounded-full">
             <button
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -222,32 +229,33 @@ function ProductPageContent({
               : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
         >
-          Add to cart
+          {product.inStock ? t("addToCart") : t("outOfStock")}
         </button>
 
         <p className="mt-3 text-xs text-gray-500 flex items-center gap-1.5">
-          <LockIcon className="w-3.5 h-3.5" /> Secure checkout, finalized via email.
+          <LockIcon className="w-3.5 h-3.5" /> {t("secureCheckoutNote")}
         </p>
 
         <div className="mt-8">
-          <AccordionItem title="Description" defaultOpen>
-            {product.description}
+          <AccordionItem title={t("description")} defaultOpen>
+            {description}
           </AccordionItem>
-          <AccordionItem title="Shipping information">
-            Orders are processed within 1-2 business days. Free shipping on orders
-            over $199.90 (contiguous US only, some exclusions apply). You will
-            receive an email confirmation after checkout and a second email with
-            tracking information once your order ships.
+          <AccordionItem title={t("shippingInformation")}>
+            {t("shippingInfoBody")}
           </AccordionItem>
-          <AccordionItem title="Warranty & support">
-            Contact support@lifetools.com or message us on WhatsApp with your order
-            number for any warranty questions. We reply within 24 hours, Monday to
-            Saturday.
+          <AccordionItem title={t("warrantySupport")}>
+            {t("warrantySupportBody").split("support@lifetools.com")[0]}
+            <a href="mailto:support@lifetools.com" className="text-brand-orange hover:underline">
+              support@lifetools.com
+            </a>
+            {t("warrantySupportBody").split("support@lifetools.com")[1]}
           </AccordionItem>
-          <AccordionItem title="Returns & refund">
-            Unused items in original packaging can be returned within 30 days of
-            delivery. Contact support@lifetools.com with your order number to start
-            a return.
+          <AccordionItem title={t("returnsRefund")}>
+            {t("returnsRefundBody").split("support@lifetools.com")[0]}
+            <a href="mailto:support@lifetools.com" className="text-brand-orange hover:underline">
+              support@lifetools.com
+            </a>
+            {t("returnsRefundBody").split("support@lifetools.com")[1]}
           </AccordionItem>
         </div>
       </div>

@@ -173,6 +173,100 @@ export const dict: Dictionary = {
     es: "Tiempo de entrega de 7 a 15 días hábiles, según la región; puede llegar antes.",
     pt: "Prazo de entrega de 7 a 15 dias úteis, dependendo da região – pode chegar antes.",
   },
+  footerTagline: {
+    en: "Professional tools for ceramic tile installation, construction, and everyday repairs.",
+    es: "Herramientas profesionales para instalación de azulejos, construcción y reparaciones cotidianas.",
+    pt: "Ferramentas profissionais para instalação de azulejos, construção e reparos do dia a dia.",
+  },
+  support: { en: "Support", es: "Soporte", pt: "Suporte" },
+  supportEmailLabel: { en: "Email", es: "Correo", pt: "E-mail" },
+  supportOrderUpdatesLine: {
+    en: "Order updates are sent by email after purchase.",
+    es: "Las actualizaciones del pedido se envían por correo después de la compra.",
+    pt: "As atualizações do pedido são enviadas por e-mail após a compra.",
+  },
+  supportReplyTime: {
+    en: "Replies within 24 hours, Mon-Sat.",
+    es: "Respondemos en 24 horas, de lunes a sábado.",
+    pt: "Respondemos em 24 horas, de segunda a sábado.",
+  },
+  policiesTitle: { en: "Policies", es: "Políticas", pt: "Políticas" },
+  shippingPolicy: { en: "Shipping Policy", es: "Política de envío", pt: "Política de envio" },
+  returnsRefundsPolicy: {
+    en: "Returns & Refunds",
+    es: "Devoluciones y reembolsos",
+    pt: "Devoluções e reembolsos",
+  },
+  privacyPolicy: { en: "Privacy Policy", es: "Política de privacidad", pt: "Política de privacidade" },
+  termsOfService: { en: "Terms of Service", es: "Términos de servicio", pt: "Termos de serviço" },
+  footerRights: {
+    en: "All rights reserved.",
+    es: "Todos los derechos reservados.",
+    pt: "Todos os direitos reservados.",
+  },
+  faqQ1: {
+    en: "How do I get order updates?",
+    es: "¿Cómo recibo actualizaciones de mi pedido?",
+    pt: "Como recebo atualizações do meu pedido?",
+  },
+  faqA1: {
+    en: "All updates are sent by email: order confirmation, processing, and shipping with tracking number.",
+    es: "Todas las actualizaciones se envían por correo: confirmación del pedido, procesamiento y envío con número de rastreo.",
+    pt: "Todas as atualizações são enviadas por e-mail: confirmação do pedido, processamento e envio com código de rastreio.",
+  },
+  faqQ2: {
+    en: "What payment methods do you accept?",
+    es: "¿Qué métodos de pago aceptan?",
+    pt: "Quais formas de pagamento vocês aceitam?",
+  },
+  faqA2: {
+    en: "Purchases are finalized securely via email. We will send you a secure payment link to complete your order.",
+    es: "Las compras se finalizan de forma segura por correo electrónico. Te enviaremos un enlace de pago seguro para completar tu pedido.",
+    pt: "As compras são finalizadas com segurança por e-mail. Enviaremos um link de pagamento seguro para concluir seu pedido.",
+  },
+  faqQ3: {
+    en: "Can I contact the seller directly?",
+    es: "¿Puedo contactar al vendedor directamente?",
+    pt: "Posso contatar o vendedor diretamente?",
+  },
+  faqA3: {
+    en: "Yes, email support@lifetools.com or message us on WhatsApp with your order number. We reply within 24 hours, Monday to Saturday.",
+    es: "Sí, escribe a support@lifetools.com o enviános un mensaje por WhatsApp con tu número de pedido. Respondemos en 24 horas, de lunes a sábado.",
+    pt: "Sim, envie um e-mail para support@lifetools.com ou mande uma mensagem no WhatsApp com o número do seu pedido. Respondemos em 24 horas, de segunda a sábado.",
+  },
+  saveAmount: { en: "Save", es: "Ahorra", pt: "Economize" },
+  freeShippingLabel: { en: "Free shipping:", es: "Envío gratis:", pt: "Frete grátis:" },
+  freeShippingDetail: {
+    en: "on orders over $199.90 (contiguous US only).",
+    es: "en pedidos superiores a $199.90 (solo EE. UU. contiguos).",
+    pt: "em pedidos acima de $199.90 (apenas EUA contiguos).",
+  },
+  orderUpdatesLabel: { en: "Order updates:", es: "Actualizaciones del pedido:", pt: "Atualizações do pedido:" },
+  orderUpdatesDetail: {
+    en: "sent by email after checkout.",
+    es: "enviadas por correo después de la compra.",
+    pt: "enviadas por e-mail após a compra.",
+  },
+  shippingInfoBody: {
+    en: "Orders are processed within 1-2 business days. Free shipping on orders over $199.90 (contiguous US only, some exclusions apply). You will receive an email confirmation after checkout and a second email with tracking information once your order ships.",
+    es: "Los pedidos se procesan dentro de 1 a 2 días hábiles. Envío gratis en pedidos superiores a $199.90 (solo EE. UU. contiguos, aplican algunas exclusiones). Recibirás una confirmación por correo después de la compra y un segundo correo con la información de rastreo cuando se envíe tu pedido.",
+    pt: "Os pedidos são processados em 1 a 2 dias úteis. Frete grátis em pedidos acima de $199.90 (apenas EUA contíguos, algumas exceções se aplicam). Você receberá uma confirmação por e-mail após a compra e um segundo e-mail com as informações de rastreio quando seu pedido for enviado.",
+  },
+  warrantySupportBody: {
+    en: "Contact support@lifetools.com or message us on WhatsApp with your order number for any warranty questions. We reply within 24 hours, Monday to Saturday.",
+    es: "Contacta a support@lifetools.com o enviános un mensaje por WhatsApp con tu número de pedido para cualquier pregunta sobre la garantía. Respondemos en 24 horas, de lunes a sábado.",
+    pt: "Entre em contato pelo support@lifetools.com ou mande uma mensagem no WhatsApp com o número do seu pedido para questões de garantia. Respondemos em 24 horas, de segunda a sábado.",
+  },
+  returnsRefundBody: {
+    en: "Unused items in original packaging can be returned within 30 days of delivery. Contact support@lifetools.com with your order number to start a return.",
+    es: "Los artículos sin usar en su empaque original pueden devolverse dentro de los 30 días posteriores a la entrega. Contacta a support@lifetools.com con tu número de pedido para iniciar una devolución.",
+    pt: "Itens não utilizados na embalagem original podem ser devolvidos em até 30 dias após a entrega. Contate support@lifetools.com com o número do seu pedido para iniciar uma devolução.",
+  },
+  freeShippingBannerText: {
+    en: "Free Shipping on orders over $199.90",
+    es: "Envío gratis en pedidos superiores a $199.90",
+    pt: "Frete grátis em pedidos acima de $199.90",
+  },
 };
 
 export function t(key: keyof typeof dict, lang: Language, vars?: Record<string, string>) {
